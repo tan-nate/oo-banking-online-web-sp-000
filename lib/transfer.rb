@@ -8,8 +8,8 @@ class Transfer
   end
   
   def initialize(sender, receiver, amount)
-    @sender = BankAccount.new(sender)
-    @receiver = BankAccount.new(receiver)
+    @sender = sender
+    @receiver = receiver
     @status = "pending"
     @amount = amount
   end
