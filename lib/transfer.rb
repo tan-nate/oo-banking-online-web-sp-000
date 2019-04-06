@@ -8,18 +8,18 @@ class Transfer
   end
   
   def initialize(sender, receiver, amount)
-    @sender = BankAccount.new()
-    @receiver = receiver
+    @sender = BankAccount.new(sender)
+    @receiver = BankAccount.new(receiver)
     @status = "pending"
     @amount = amount
   end
   
   def valid?
-    sender = BankAccount.all.find {|account| account.name == self.sender}
-    receiver = BankAccount.all.find {|account| account.name == self.receiver}
+    # sender = BankAccount.all.find {|account| account.name == self.sender}
+    # receiver = BankAccount.all.find {|account| account.name == self.receiver}
     if sender == nil
       false
-    elsif sender.valid? && receiver.valid? && self.sender.balance > self.amount
+    elsif self.sender.valid? && self.receiver.valid? && self.sender.balance > self.amount
       true
     else
       false
