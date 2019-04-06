@@ -17,7 +17,9 @@ class Transfer
   def valid?
     sender = BankAccount.all.find {|account| account.name == self.sender}
     receiver = BankAccount.all.find {|account| account.name == self.receiver}
-    if sender.valid? && receiver.valid? && self.sender.balance > self.amount
+    if sender == nil
+      false
+    elsif sender.valid? && receiver.valid? && self.sender.balance > self.amount
       true
     else
       false
